@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,12 +62,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				betting: {
+					back: '#10B981',
+					lay: '#EF4444',
+					match: '#8B5CF6',
+					hover: '#D946EF',
+					bg: '#121212',
+					card: '#221F26',
+					border: '#403E43',
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				mono: ['Roboto Mono', 'monospace'],
 			},
 			keyframes: {
 				'accordion-down': {
@@ -84,11 +98,32 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-neon': {
+					'0%, 100%': {
+						opacity: '1',
+						boxShadow: '0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5)'
+					},
+					'50%': {
+						opacity: '0.8',
+						boxShadow: '0 0 10px rgba(139, 92, 246, 0.9), 0 0 15px rgba(139, 92, 246, 0.7)'
+					}
+				},
+				'odds-change-up': {
+					'0%': { backgroundColor: 'rgba(16, 185, 129, 0.5)' },
+					'100%': { backgroundColor: 'transparent' }
+				},
+				'odds-change-down': {
+					'0%': { backgroundColor: 'rgba(239, 68, 68, 0.5)' },
+					'100%': { backgroundColor: 'transparent' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-neon': 'pulse-neon 2s infinite',
+				'odds-up': 'odds-change-up 1s ease-out',
+				'odds-down': 'odds-change-down 1s ease-out'
 			}
 		}
 	},
