@@ -27,16 +27,16 @@ const TournamentSection = ({ tournamentName, matches }: TournamentSectionProps) 
   return (
     <div className="mb-4">
       <div 
-        className="bg-betting-card border border-betting-border rounded-md p-3 flex justify-between items-center cursor-pointer"
+        className="bg-gray-50 border border-gray-200 rounded-md p-3 flex justify-between items-center cursor-pointer"
         onClick={() => setCollapsed(!collapsed)}
       >
-        <h3 className="font-medium text-white flex items-center">
+        <h3 className="font-medium text-gray-800 flex items-center">
           {tournamentName}
-          <span className="ml-2 px-2 py-0.5 bg-betting-match/20 text-betting-match rounded-full text-xs">
+          <span className="ml-2 px-2 py-0.5 bg-red-100 text-red-600 rounded-full text-xs">
             {matches.length}
           </span>
         </h3>
-        <button className="text-gray-400">
+        <button className="text-gray-500">
           {collapsed ? <ChevronDown size={20} /> : <ChevronUp size={20} />}
         </button>
       </div>

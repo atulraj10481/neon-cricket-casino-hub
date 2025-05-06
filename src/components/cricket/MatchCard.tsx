@@ -57,11 +57,11 @@ const MatchCard = ({ match, tournamentName }: MatchCardProps) => {
     const now = new Date();
     
     if (isLive()) {
-      return { label: "LIVE", bgColor: "bg-betting-lay/30", textColor: "text-betting-lay" };
+      return { label: "LIVE", bgColor: "bg-red-100", textColor: "text-red-600" };
     } else if (matchDate > now) {
-      return { label: "UPCOMING", bgColor: "bg-betting-match/20", textColor: "text-betting-match" };
+      return { label: "UPCOMING", bgColor: "bg-blue-100", textColor: "text-blue-600" };
     } else {
-      return { label: "COMPLETED", bgColor: "bg-gray-600/30", textColor: "text-gray-400" };
+      return { label: "COMPLETED", bgColor: "bg-gray-200", textColor: "text-gray-600" };
     }
   };
   
@@ -69,7 +69,7 @@ const MatchCard = ({ match, tournamentName }: MatchCardProps) => {
 
   return (
     <Link to={`/cricket/${match.event_id}`}>
-      <div className="match-card p-4">
+      <div className="match-card p-3">
         {/* Header */}
         <div className="flex justify-between items-center mb-3">
           <div className="flex items-center">
@@ -77,38 +77,38 @@ const MatchCard = ({ match, tournamentName }: MatchCardProps) => {
               {status.label}
             </span>
             {tournamentName && (
-              <span className="text-xs bg-betting-match/20 text-betting-match px-2 py-0.5 rounded-full">
+              <span className="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full">
                 {tournamentName}
               </span>
             )}
           </div>
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-500">
             {formatDate(match.openDate)}
           </span>
         </div>
         
         {/* Match Name */}
         <div className="flex justify-between items-center mb-3">
-          <h3 className="font-medium text-white">{match.event_name}</h3>
+          <h3 className="font-medium text-gray-800">{match.event_name}</h3>
           <button onClick={(e) => {
             e.preventDefault();
             setExpanded(!expanded);
           }}>
-            <Star size={16} className={expanded ? "text-betting-match" : "text-gray-500"} />
+            <Star size={16} className={expanded ? "text-betting-match" : "text-gray-400"} />
           </button>
         </div>
         
         {/* Betting Odds */}
         <div className="space-y-2">
-          <div className="grid grid-cols-12 gap-2 text-xs text-gray-400 px-1">
+          <div className="grid grid-cols-12 gap-2 text-xs text-gray-500 px-1">
             <div className="col-span-6"></div>
-            <div className="col-span-3 text-center">Back</div>
-            <div className="col-span-3 text-center">Lay</div>
+            <div className="col-span-3 text-center font-semibold">Back</div>
+            <div className="col-span-3 text-center font-semibold">Lay</div>
           </div>
           
-          {match.runners.map((runner, idx) => (
+          {match.runners.slice(0, 2).map((runner, idx) => (
             <div key={idx} className="grid grid-cols-12 gap-2 items-center">
-              <div className="col-span-6 text-sm text-gray-300">{runner.name}</div>
+              <div className="col-span-6 text-sm text-gray-700">{runner.name}</div>
               <div className="col-span-3">
                 <div className="back-btn rounded p-1 text-center text-xs font-mono">
                   {runner.backOdds.toFixed(2)}
@@ -121,19 +121,37 @@ const MatchCard = ({ match, tournamentName }: MatchCardProps) => {
               </div>
             </div>
           ))}
+
+          {match.runners.length > 2 && expanded && 
+            match.runners.slice(2).map((runner, idx) => (
+              <div key={idx + 2} className="grid grid-cols-12 gap-2 items-center">
+                <div className="col-span-6 text-sm text-gray-700">{runner.name}</div>
+                <div className="col-span-3">
+                  <div className="back-btn rounded p-1 text-center text-xs font-mono">
+                    {runner.backOdds.toFixed(2)}
+                  </div>
+                </div>
+                <div className="col-span-3">
+                  <div className="lay-btn rounded p-1 text-center text-xs font-mono">
+                    {runner.layOdds > 0 ? runner.layOdds.toFixed(2) : "-"}
+                  </div>
+                </div>
+              </div>
+            ))
+          }
         </div>
         
         {/* Extra Information when expanded */}
         {expanded && (
-          <div className="mt-4 pt-3 border-t border-betting-border">
+          <div className="mt-4 pt-3 border-t border-gray-200">
             <div className="grid grid-cols-2 gap-2 text-xs">
-              <div className="glass-card p-2 text-center">
-                <div className="text-gray-400 mb-1">Fancy</div>
-                <div className="text-betting-match">Available</div>
+              <div className="border border-gray-200 rounded p-2 text-center bg-white">
+                <div className="text-gray-500 mb-1">Fancy</div>
+                <div className="text-blue-600">Available</div>
               </div>
-              <div className="glass-card p-2 text-center">
-                <div className="text-gray-400 mb-1">Bookmaker</div>
-                <div className="text-betting-match">Available</div>
+              <div className="border border-gray-200 rounded p-2 text-center bg-white">
+                <div className="text-gray-500 mb-1">Bookmaker</div>
+                <div className="text-blue-600">Available</div>
               </div>
             </div>
           </div>

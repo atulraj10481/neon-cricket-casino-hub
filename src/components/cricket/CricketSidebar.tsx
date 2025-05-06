@@ -24,22 +24,22 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
   const [activeSection, setActiveSection] = useState<"tournaments" | "upcoming" | "trending">("tournaments");
 
   return (
-    <aside className="w-full md:w-64 bg-betting-card border-r border-betting-border flex flex-col h-full">
-      <div className="p-4 border-b border-betting-border">
-        <h2 className="font-bold text-white flex items-center">
-          <Trophy size={18} className="text-betting-match mr-2" /> Cricket Betting
+    <aside className="w-full md:w-64 bg-white border-r border-gray-200 flex flex-col h-full">
+      <div className="p-4 border-b border-gray-200">
+        <h2 className="font-bold text-gray-800 flex items-center">
+          <Trophy size={18} className="text-blue-600 mr-2" /> Cricket Betting
         </h2>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex border-b border-betting-border">
+      <div className="flex border-b border-gray-200">
         <Button
           variant="ghost"
           size="sm"
           className={`flex-1 rounded-none border-b-2 ${
             activeSection === "tournaments"
-              ? "border-betting-match text-betting-match"
-              : "border-transparent text-gray-400"
+              ? "border-blue-600 text-blue-600"
+              : "border-transparent text-gray-500"
           }`}
           onClick={() => setActiveSection("tournaments")}
         >
@@ -50,8 +50,8 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
           size="sm"
           className={`flex-1 rounded-none border-b-2 ${
             activeSection === "upcoming"
-              ? "border-betting-match text-betting-match"
-              : "border-transparent text-gray-400"
+              ? "border-blue-600 text-blue-600"
+              : "border-transparent text-gray-500"
           }`}
           onClick={() => setActiveSection("upcoming")}
         >
@@ -62,8 +62,8 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
           size="sm"
           className={`flex-1 rounded-none border-b-2 ${
             activeSection === "trending"
-              ? "border-betting-match text-betting-match"
-              : "border-transparent text-gray-400"
+              ? "border-blue-600 text-blue-600"
+              : "border-transparent text-gray-500"
           }`}
           onClick={() => setActiveSection("trending")}
         >
@@ -80,8 +80,8 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
               size="sm"
               className={`w-full justify-start mb-1 ${
                 activeTournament === "all"
-                  ? "bg-betting-match/20 text-betting-match"
-                  : "text-gray-300 hover:bg-betting-match/10"
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-700 hover:bg-blue-50/60"
               }`}
               onClick={() => setActiveTournament("all")}
             >
@@ -95,12 +95,12 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
                 size="sm"
                 className={`w-full justify-start mb-1 ${
                   activeTournament === tournament.id
-                    ? "bg-betting-match/20 text-betting-match"
-                    : "text-gray-300 hover:bg-betting-match/10"
-                } ${tournament.featured ? "border-l-2 border-betting-match" : ""}`}
+                    ? "bg-blue-50 text-blue-600"
+                    : "text-gray-700 hover:bg-blue-50/60"
+                } ${tournament.featured ? "border-l-2 border-red-500" : ""}`}
                 onClick={() => setActiveTournament(tournament.id)}
               >
-                {tournament.featured && <Star size={14} className="mr-2 text-betting-match" />}
+                {tournament.featured && <Star size={14} className="mr-2 text-red-500" />}
                 {tournament.name}
               </Button>
             ))}
@@ -112,17 +112,17 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
       {activeSection === "upcoming" && (
         <div className="overflow-y-auto flex-1 p-2 space-y-2">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="glass-card p-2 text-xs">
+            <div key={i} className="border border-gray-200 rounded-md p-2 text-xs bg-white">
               <div className="flex items-center justify-between mb-1">
-                <span className="text-gray-400">May {i + 7}, 2025</span>
-                <span className="bg-betting-match/20 text-betting-match text-xs px-2 py-0.5 rounded-full">
+                <span className="text-gray-500">May {i + 7}, 2025</span>
+                <span className="bg-blue-100 text-blue-600 text-xs px-2 py-0.5 rounded-full">
                   IPL
                 </span>
               </div>
-              <div className="text-white font-medium">
+              <div className="text-gray-800 font-medium">
                 Team A vs Team B
               </div>
-              <div className="flex items-center mt-1 text-gray-400">
+              <div className="flex items-center mt-1 text-gray-500">
                 <Clock size={12} className="mr-1" /> 19:30 IST
               </div>
             </div>
@@ -134,16 +134,16 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
       {activeSection === "trending" && (
         <div className="overflow-y-auto flex-1 p-2 space-y-2">
           {[1, 2, 3].map((i) => (
-            <div key={i} className="glass-card p-2 text-xs">
+            <div key={i} className="border border-gray-200 rounded-md p-2 text-xs bg-white">
               <div className="flex items-center justify-between mb-1">
-                <span className="bg-betting-lay/30 text-betting-lay px-2 py-0.5 rounded-full">
+                <span className="bg-red-100 text-red-600 px-2 py-0.5 rounded-full">
                   LIVE
                 </span>
-                <span className="bg-betting-match/20 text-betting-match text-xs px-2 py-0.5 rounded-full">
+                <span className="bg-blue-100 text-blue-600 text-xs px-2 py-0.5 rounded-full">
                   IPL
                 </span>
               </div>
-              <div className="text-white font-medium">
+              <div className="text-gray-800 font-medium">
                 Team X vs Team Y
               </div>
               <div className="flex justify-between mt-1">
@@ -155,7 +155,7 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
                     2.05
                   </span>
                 </div>
-                <div className="text-gray-400">
+                <div className="text-gray-500">
                   <Star size={12} className="inline mr-1" /> Popular
                 </div>
               </div>
@@ -165,11 +165,11 @@ const CricketSidebar = ({ activeTournament, setActiveTournament }: CricketSideba
       )}
 
       {/* Banner */}
-      <div className="mt-auto p-3 border-t border-betting-border">
-        <div className="bg-gradient-to-r from-betting-match/30 to-betting-hover/30 p-3 rounded-md text-center">
-          <p className="text-white text-xs font-medium">New User Bonus</p>
-          <p className="text-betting-match text-sm font-bold">₹500 FREE BET</p>
-          <Button size="sm" className="mt-2 w-full bg-betting-match hover:bg-betting-hover text-white text-xs">
+      <div className="mt-auto p-3 border-t border-gray-200">
+        <div className="bg-gradient-to-r from-blue-50 to-blue-100 p-3 rounded-md text-center">
+          <p className="text-gray-800 text-xs font-medium">New User Bonus</p>
+          <p className="text-blue-600 text-sm font-bold">₹500 FREE BET</p>
+          <Button size="sm" className="mt-2 w-full bg-blue-600 hover:bg-blue-700 text-white text-xs">
             Claim Now
           </Button>
         </div>

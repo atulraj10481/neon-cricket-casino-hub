@@ -64,13 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				betting: {
-					back: '#10B981',
-					lay: '#EF4444',
-					match: '#8B5CF6',
-					hover: '#D946EF',
-					bg: '#121212',
-					card: '#221F26',
-					border: '#403E43',
+					back: '#1EAEDB', // Changed from green to blue
+					lay: '#EF4444', // Kept red
+					match: '#E11D48', // Changed from purple to red
+					hover: '#F43F5E', // Changed to lighter red
+					bg: '#FFFFFF', // Changed to white
+					card: '#FFFFFF', // Changed to white
+					border: '#E5E7EB', // Changed to light gray
 				}
 			},
 			borderRadius: {
@@ -102,19 +102,19 @@ export default {
 				'pulse-neon': {
 					'0%, 100%': {
 						opacity: '1',
-						boxShadow: '0 0 5px rgba(139, 92, 246, 0.7), 0 0 10px rgba(139, 92, 246, 0.5)'
+						boxShadow: '0 0 5px rgba(29, 78, 216, 0.7), 0 0 10px rgba(29, 78, 216, 0.5)'
 					},
 					'50%': {
 						opacity: '0.8',
-						boxShadow: '0 0 10px rgba(139, 92, 246, 0.9), 0 0 15px rgba(139, 92, 246, 0.7)'
+						boxShadow: '0 0 10px rgba(29, 78, 216, 0.9), 0 0 15px rgba(29, 78, 216, 0.7)'
 					}
 				},
 				'odds-change-up': {
-					'0%': { backgroundColor: 'rgba(16, 185, 129, 0.5)' },
+					'0%': { backgroundColor: 'rgba(30, 174, 219, 0.3)' },
 					'100%': { backgroundColor: 'transparent' }
 				},
 				'odds-change-down': {
-					'0%': { backgroundColor: 'rgba(239, 68, 68, 0.5)' },
+					'0%': { backgroundColor: 'rgba(239, 68, 68, 0.3)' },
 					'100%': { backgroundColor: 'transparent' }
 				}
 			},
